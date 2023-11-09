@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1020280904386",
+    "project_id": "fir-9e91b",
+    "storage_bucket": "fir-9e91b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020280904386:android:39e0653fada281b6cbb95b",
+        "android_client_info": {
+          "package_name": "com.example.read_cloud_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAATheRL5nL5p476udzhtPOYNfGjAI6xWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
