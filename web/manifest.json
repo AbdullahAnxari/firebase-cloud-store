@@ -1,6 +1,6 @@
 {
-    "name": "read_cloud_store",
-    "short_name": "read_cloud_store",
+    "name": "firebase_cloud_store",
+    "short_name": "firebase_cloud_store",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-package com.example.read_cloud_store
+package com.example.firebase_cloud_store
 
 import io.flutter.embedding.android.FlutterActivity
 

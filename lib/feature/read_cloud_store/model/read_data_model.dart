@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
-
-import 'package:read_cloud_store/lib.dart';
+import '../../../lib.dart';
 
 class ReadDataModel {
   final String? stringField;
@@ -44,6 +42,20 @@ class ReadDataModel {
     );
   }
 
+// String toJson() => json.encode(toMap()); //create your own json model
+  toJson() {
+    return {
+      'stringField': stringField,
+      'numberField': numberField,
+      'booleanField': booleanField,
+      'arrayField': arrayField,
+      'geopointField': geopointField,
+      'nestedObject': nestedObject,
+      'timestampField': timestampField,
+      'referenceField': referenceField,
+    };
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'stringField': stringField,
@@ -51,7 +63,7 @@ class ReadDataModel {
       'booleanField': booleanField,
       'arrayField': arrayField,
       'geopointField': geopointField,
-      'nestedObject': nestedObject,
+      'nestedObject': nestedObject.toString(),
       'timestampField': timestampField,
       'referenceField': referenceField,
     };
@@ -75,8 +87,6 @@ class ReadDataModel {
       referenceField: map['referenceField'],
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory ReadDataModel.fromJson(String source) =>
       ReadDataModel.fromMap(json.decode(source) as Map<String, dynamic>);

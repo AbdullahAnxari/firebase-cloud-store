@@ -1,13 +1,15 @@
-import 'remote_repo.dart';
+import '../../../lib.dart';
 
 class FirestoreRepository {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final dataRepo = Get.put(WriteCloudStore());
 
+  //* Fetching data from firestore
   Future<ReadDataModel?> fetch() async {
     try {
       CollectionReference reference =
           _firestore.collection(FirebaseConstant.data);
-      
+
       DocumentSnapshot docSnap =
           await reference.doc("zAVgxfOJCQUNsFY9T7QP").get();
       //*
@@ -22,6 +24,20 @@ class FirestoreRepository {
     } catch (e) {
       debugPrint("Error: $e");
       return null;
+    }
+  }
+
+  //*Witing data to firestore
+  Future<bool> createData(ReadDataModel data) async {
+    try {
+      CollectionReference reference =
+          _firestore.collection(FirebaseConstant.writeData);
+
+      await reference.add(data.toMap());
+      return true;
+    } catch (e) {
+      debugPrint('Create data Error: $e');
+      return false;
     }
   }
 }

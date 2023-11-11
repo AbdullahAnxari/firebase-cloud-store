@@ -1,8 +1,7 @@
-import 'package:read_cloud_store/lib.dart';
-
+import '../../../lib.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(ReadCloudStore());
+    Get.put(WriteCloudStore());
   }
 }

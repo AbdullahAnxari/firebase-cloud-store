@@ -20,9 +20,11 @@ class FirebaseReadApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           initialBinding: AppBinding(),
-          title: 'Firebase read_cloud_store',
+          title: 'Firebase firebase_cloud_store',
           debugShowCheckedModeBanner: false,
-          home: const ReadCloudStoreView(),
+          home: WriteView(),
+          // home:  ReadView(),
+          // home:  Bool(),
         );
       },
     );

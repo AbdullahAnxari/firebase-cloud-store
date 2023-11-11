@@ -1,4 +1,4 @@
-# read_cloud_store
+# firebase_cloud_store
 
 A new Flutter project.
 
