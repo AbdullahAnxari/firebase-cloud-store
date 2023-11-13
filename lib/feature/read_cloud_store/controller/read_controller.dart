@@ -1,7 +1,7 @@
-import '../../../lib.dart';
+import '../../../../../lib.dart';
 
-class ReadCloudStore extends GetxController {
-  static final instance = Get.find<ReadCloudStore>();
+class ReadController extends GetxController {
+  static final instance = Get.find<ReadController>();
 
   ReadDataModel read = ReadDataModel();
 
@@ -19,7 +19,7 @@ class ReadCloudStore extends GetxController {
   }
 
   //* Write
-  void setData({required ReadDataModel newData}) async {
+  void setData({required WriteDataModel newData}) async {
     final result = await FirestoreRepository().createData(newData);
     if (result) {
       Fluttertoast.showToast(msg: 'Data is successfully Written');
@@ -28,3 +28,8 @@ class ReadCloudStore extends GetxController {
     }
   }
 }
+
+// class ReadCloudStore extends GetxController {
+//   static final instance = Get.find<ReadCloudStore>();
+
+// }

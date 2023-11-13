@@ -1,9 +1,10 @@
 import '../../../lib.dart';
 
-class ReadView extends GetView<ReadCloudStore> {
+
+class ReadView extends GetView<ReadController> {
   ReadView({super.key});
   final TextEditingController stringFieldController = TextEditingController();
-  final WriteCloudStore writeController = WriteCloudStore();
+  final WriteController writeController = WriteController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,9 @@ class ReadView extends GetView<ReadCloudStore> {
         ),
       );
 
-  Widget get _body => GetBuilder<ReadCloudStore>(
+  Widget get _body => GetBuilder<ReadController>(
         builder: (_) {
-          return SingleChildScrollView(
+          return   SingleChildScrollView(
             child: SafeArea(
               child: Padding(
                 padding:
@@ -34,6 +35,8 @@ class ReadView extends GetView<ReadCloudStore> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+
+                    //* Write String
                     _customField(
                       labelText: 'E-Mail',
                       controller: stringFieldController,
@@ -43,14 +46,16 @@ class ReadView extends GetView<ReadCloudStore> {
                     TextButton(
                       onPressed: () async {
                         if (stringFieldController.text.isNotEmpty) {
-                          final newData = controller.read.copyWith(
+                          final newData = writeController.write.copyWith(
                             stringField: stringFieldController.text.toString(),
                           );
-                          controller.setData(newData: newData);
+                        writeController.setData(newData: newData);
                         }
                       },
                       child: const Text("Create"),
                     ),
+
+                    //*Reading data 
                     TextButton(
                       onPressed: controller.fetchData,
                       child: const Text("Fetch"),

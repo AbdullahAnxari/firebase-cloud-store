@@ -1,10 +1,11 @@
+import 'package:firebase_cloud_store/feature/write_cloud_store/model/model.dart';
+
 import '../../../lib.dart';
 
 class FirestoreRepository {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final dataRepo = Get.put(WriteCloudStore());
 
-  //* Fetching data from firestore
+  //* Reading data from firestore
   Future<ReadDataModel?> fetch() async {
     try {
       CollectionReference reference =
@@ -12,7 +13,7 @@ class FirestoreRepository {
 
       DocumentSnapshot docSnap =
           await reference.doc("zAVgxfOJCQUNsFY9T7QP").get();
-      //*
+
       Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
       if (snapshot != null) {
         ReadDataModel read = ReadDataModel.fromMap(snapshot);
@@ -28,7 +29,7 @@ class FirestoreRepository {
   }
 
   //*Witing data to firestore
-  Future<bool> createData(ReadDataModel data) async {
+  Future<bool> createData(WriteDataModel data) async {
     try {
       CollectionReference reference =
           _firestore.collection(FirebaseConstant.writeData);

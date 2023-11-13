@@ -1,3 +1,5 @@
+
+
 import '../../../lib.dart';
 
 class ReadDataModel {
@@ -6,7 +8,7 @@ class ReadDataModel {
   final bool? booleanField;
   final List<String>? arrayField;
   final GeoPoint? geopointField;
-  final NestedObject? nestedObject;
+  final NestedReadObject? nestedObject;
   final Timestamp? timestampField;
   final ReferenceField? referenceField;
   ReadDataModel({
@@ -26,7 +28,7 @@ class ReadDataModel {
     bool? booleanField,
     List<String>? arrayField,
     GeoPoint? geopointField,
-    NestedObject? nestedObject,
+    NestedReadObject? nestedObject,
     Timestamp? timestampField,
     ReferenceField? referenceField,
   }) {
@@ -82,7 +84,7 @@ class ReadDataModel {
           : null,
       geopointField: map['geopointField'],
       nestedObject:
-          NestedObject.fromMap(map['nestedObject'] as Map<String, dynamic>),
+          NestedReadObject.fromMap(map['nestedObject'] as Map<String, dynamic>),
       timestampField: map['timestampField'],
       referenceField: map['referenceField'],
     );

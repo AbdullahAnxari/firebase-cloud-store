@@ -2,7 +2,9 @@ import 'package:firebase_cloud_store/lib.dart';
 
 class SingleFirestoreRepository {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Future<String?> fetchSingleNum(String fieldName) async {
+
+  //* Read
+  Future<String?> fetchSingleString(String fieldName) async {
     try {
       CollectionReference reference =
           _firestore.collection(FirebaseConstant.data);

@@ -1,4 +1,5 @@
-class FirebaseConstant{
+class FirebaseConstant {
   static const data = "myCollections";
-  static const writeData = "WriteDate";
+  static const writeData = "WriteData";
+  static const singleWriteData = "SingleWriteData";
 }

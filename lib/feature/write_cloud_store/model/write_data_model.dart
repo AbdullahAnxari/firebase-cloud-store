@@ -1,15 +1,15 @@
 import '../../../lib.dart';
 
-class ReadDataModel {
+class WriteDataModel {
   final String? stringField;
   final int? numberField;
   final bool? booleanField;
   final List<String>? arrayField;
   final GeoPoint? geopointField;
-  final NestedObject? nestedObject;
+  final NestedReadObject? nestedObject;
   final Timestamp? timestampField;
   final ReferenceField? referenceField;
-  ReadDataModel({
+  WriteDataModel({
     this.stringField,
     this.numberField,
     this.booleanField,
@@ -20,17 +20,17 @@ class ReadDataModel {
     this.referenceField,
   });
 
-  ReadDataModel copyWith({
+  WriteDataModel copyWith({
     String? stringField,
     int? numberField,
     bool? booleanField,
     List<String>? arrayField,
     GeoPoint? geopointField,
-    NestedObject? nestedObject,
+    NestedReadObject? nestedObject,
     Timestamp? timestampField,
     ReferenceField? referenceField,
   }) {
-    return ReadDataModel(
+    return WriteDataModel(
       stringField: stringField ?? this.stringField,
       numberField: numberField ?? this.numberField,
       booleanField: booleanField ?? this.booleanField,
@@ -69,8 +69,8 @@ class ReadDataModel {
     };
   }
 
-  factory ReadDataModel.fromMap(Map<String, dynamic> map) {
-    return ReadDataModel(
+  factory WriteDataModel.fromMap(Map<String, dynamic> map) {
+    return WriteDataModel(
       stringField:
           map['stringField'] != null ? map['stringField'] as String : null,
       numberField:
@@ -82,14 +82,14 @@ class ReadDataModel {
           : null,
       geopointField: map['geopointField'],
       nestedObject:
-          NestedObject.fromMap(map['nestedObject'] as Map<String, dynamic>),
+          NestedReadObject.fromMap(map['nestedObject'] as Map<String, dynamic>),
       timestampField: map['timestampField'],
       referenceField: map['referenceField'],
     );
   }
 
-  factory ReadDataModel.fromJson(String source) =>
-      ReadDataModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory WriteDataModel.fromJson(String source) =>
+      WriteDataModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -97,7 +97,7 @@ class ReadDataModel {
   }
 
   @override
-  bool operator ==(covariant ReadDataModel other) {
+  bool operator ==(covariant WriteDataModel other) {
     if (identical(this, other)) return true;
 
     return other.stringField == stringField &&

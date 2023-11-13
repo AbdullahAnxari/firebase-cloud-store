@@ -1,19 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
 
-class NestedObject {
+import '../../../lib.dart';
+
+class NestedReadObject {
   final String? nestedNumber;
   final String? nestedString;
-  NestedObject({
+  NestedReadObject({
     this.nestedNumber,
     this.nestedString,
   });
 
-  NestedObject copyWith({
+  NestedReadObject copyWith({
     String? nestedNumber,
     String? nestedString,
   }) {
-    return NestedObject(
+    return NestedReadObject(
       nestedNumber: nestedNumber ?? this.nestedNumber,
       nestedString: nestedString ?? this.nestedString,
     );
@@ -26,8 +27,8 @@ class NestedObject {
     };
   }
 
-  factory NestedObject.fromMap(Map<String, dynamic> map) {
-    return NestedObject(
+  factory NestedReadObject.fromMap(Map<String, dynamic> map) {
+    return NestedReadObject(
       nestedNumber: map['nestedNumber'] != null ? map['nestedNumber'] as String : null,
       nestedString: map['nestedString'] != null ? map['nestedString'] as String : null,
     );
@@ -35,13 +36,13 @@ class NestedObject {
 
   String toJson() => json.encode(toMap());
 
-  factory NestedObject.fromJson(String source) => NestedObject.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory NestedReadObject.fromJson(String source) => NestedReadObject.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'NestedObject(nestedNumber: $nestedNumber, nestedString: $nestedString)';
 
   @override
-  bool operator ==(covariant NestedObject other) {
+  bool operator ==(covariant NestedReadObject other) {
     if (identical(this, other)) return true;
   
     return 
