@@ -81,7 +81,7 @@ class SingleWriteController extends GetxController {
   void setSingleGeofield(
       {required double latitude, required double longitude}) async {
     final result = await SingleFireWriteRepository()
-        .createSingleGeofield(latitude, longitude);
+        .createSingleGeofield(latitude:latitude, longitude:longitude);
     if (result) {
       Fluttertoast.showToast(msg: 'String is successfully Written');
     } else {

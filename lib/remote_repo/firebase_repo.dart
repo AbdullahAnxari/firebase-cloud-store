@@ -1,11 +1,9 @@
-import 'package:firebase_cloud_store/feature/write_cloud_store/model/model.dart';
-
 import '../../../lib.dart';
 
 class FirestoreRepository {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  //* Reading data from firestore
+  //* Read data
   Future<ReadDataModel?> fetch() async {
     try {
       CollectionReference reference =

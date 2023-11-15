@@ -25,7 +25,7 @@ class ReadView extends GetView<ReadController> {
 
   Widget get _body => GetBuilder<ReadController>(
         builder: (_) {
-          return   SingleChildScrollView(
+          return SingleChildScrollView(
             child: SafeArea(
               child: Padding(
                 padding:
@@ -34,7 +34,6 @@ class ReadView extends GetView<ReadController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-
                     //* Write String
                     _customField(
                       labelText: 'E-Mail',
@@ -48,13 +47,13 @@ class ReadView extends GetView<ReadController> {
                           final newData = writeController.write.copyWith(
                             stringField: stringFieldController.text.toString(),
                           );
-                        writeController.setData(newData: newData);
+                          writeController.setData(newData: newData);
                         }
                       },
                       child: const Text("Create"),
                     ),
 
-                    //*Reading data 
+                    //*Reading data
                     TextButton(
                       onPressed: controller.fetchData,
                       child: const Text("Fetch"),

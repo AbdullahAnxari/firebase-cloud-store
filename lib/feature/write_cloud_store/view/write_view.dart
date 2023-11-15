@@ -5,7 +5,7 @@ class WriteView extends GetView<WriteController> {
   WriteView({super.key});
 
   bool isSwitchOn = false;
-  @override
+  @override  
   Widget build(BuildContext context) {
     return Theme(
         data: ThemeData(

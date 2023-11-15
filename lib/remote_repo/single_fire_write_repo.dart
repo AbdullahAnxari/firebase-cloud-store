@@ -60,11 +60,12 @@ class SingleFireWriteRepository {
   }
 
   //* GeoField
-  Future<bool> createSingleGeofield(double _latitude, double _longitude) async {
+  Future<bool> createSingleGeofield(
+      {required double latitude, required double longitude}) async {
     try {
       CollectionReference reference =
           _firestore.collection(FirebaseConstant.singleWriteData);
-      await reference.add({'latitude': _latitude, 'longitude': _longitude});
+      await reference.add({'Geopoint': GeoPoint(latitude, longitude)});
 
       return true;
     } catch (e) {

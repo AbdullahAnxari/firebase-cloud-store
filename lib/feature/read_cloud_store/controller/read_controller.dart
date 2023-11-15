@@ -6,7 +6,7 @@ class ReadController extends GetxController {
   ReadDataModel read = ReadDataModel();
 
   //* fetch
-  void fetchData() async {
+  void fetchData() async {  
     final results = await FirestoreRepository().fetch();
 
     if (results != null) {

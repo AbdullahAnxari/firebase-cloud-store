@@ -23,7 +23,8 @@ class FirebaseReadApp extends StatelessWidget {
           title: 'Firebase firebase_cloud_store',
           debugShowCheckedModeBanner: false,
           // home: WriteView(),
-          home: SingleWriteView(),
+          home: SingleReadView(),
+          // home: SingleWriteView(),
           // home:  ReadView(),
           // home:  Bool(),
         );
