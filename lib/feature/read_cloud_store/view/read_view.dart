@@ -1,6 +1,5 @@
 import '../../../lib.dart';
 
-
 class ReadView extends GetView<ReadController> {
   ReadView({super.key});
   final TextEditingController stringFieldController = TextEditingController();
