@@ -1,19 +1,23 @@
-import 'package:firebase_cloud_store/lib.dart';
+import '../lib.dart';
 
 class SingleFirestoreReadRepository {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static final CollectionReference _reference =
       _firestore.collection(FirebaseConstant.data);
-  //* String
-  Future<String?> fetchSingleString() async {
-    try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
 
-      //* handles data conversion
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('stringField')) {
-        return snapshot['stringField'];
+  static late DocumentSnapshot docSnap;
+  static Map<String, dynamic>? snapshot;
+
+  static Future<void> getDocSnap() async {
+    docSnap = await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
+    snapshot = docSnap.data() as Map<String, dynamic>?;
+  }
+
+  //* String
+  static Future<String?> fetchSingleString() async {
+    try {
+      if (snapshot != null && snapshot!.containsKey('stringField')) {
+        return snapshot!['stringField'];
       } else {
         return null;
       }
@@ -24,14 +28,10 @@ class SingleFirestoreReadRepository {
   }
 
   //* Int
-  Future<int?> fetchSingleInt() async {
+  static Future<int?> fetchSingleInt() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('numberField')) {
-        return snapshot['numberField'];
+      if (snapshot != null && snapshot!.containsKey('numberField')) {
+        return snapshot!['numberField'];
       } else {
         return null;
       }
@@ -42,14 +42,10 @@ class SingleFirestoreReadRepository {
   }
 
   //*BooleanField
-  Future<bool?> fetchSingleBool() async {
+  static Future<bool?> fetchSingleBool() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('booleanField')) {
-        return snapshot['booleanField'];
+      if (snapshot != null && snapshot!.containsKey('booleanField')) {
+        return snapshot!['booleanField'];
       } else {
         return null;
       }
@@ -60,14 +56,10 @@ class SingleFirestoreReadRepository {
   }
 
   //*Timestamp
-  Future<Timestamp?> fetchSingleTimestamp() async {
+  static Future<Timestamp?> fetchSingleTimestamp() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('timestampField')) {
-        return snapshot['timestampField'];
+      if (snapshot != null && snapshot!.containsKey('timestampField')) {
+        return snapshot!['timestampField'];
       } else {
         return null;
       }
@@ -78,15 +70,10 @@ class SingleFirestoreReadRepository {
   }
 
   //* GeoField
-  Future<GeoPoint?> fetchSingleGeopint() async {
+  static Future<GeoPoint?> fetchSingleGeopint() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-
-      if (snapshot != null && snapshot.containsKey('geopointField')) {
-        GeoPoint geoPoint = snapshot['geopointField'];
+      if (snapshot != null && snapshot!.containsKey('geopointField')) {
+        GeoPoint geoPoint = snapshot!['geopointField'];
         return geoPoint;
       } else {
         return null;
@@ -98,14 +85,10 @@ class SingleFirestoreReadRepository {
   }
 
   //*ReferenceField
-  Future<ReferenceField?> fetchSingleReference() async {
+  static Future<ReferenceField?> fetchSingleReference() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('referenceField')) {
-        return snapshot['referenceField'];
+      if (snapshot != null && snapshot!.containsKey('referenceField')) {
+        return snapshot!['referenceField'];
       } else {
         return null;
       }
@@ -116,15 +99,11 @@ class SingleFirestoreReadRepository {
   }
 
   //*Array Field
-  Future<List<String>?> fetchSingleArrayField() async {
+  static Future<List<String>?> fetchSingleArrayField() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-      if (snapshot != null && snapshot.containsKey('arrayField')) {
+      if (snapshot != null && snapshot!.containsKey('arrayField')) {
         List<String>? newList = [];
-        for (var element in snapshot['arrayField']) {
+        for (var element in snapshot!['arrayField']) {
           newList.add(element);
         }
         return newList;
@@ -138,17 +117,12 @@ class SingleFirestoreReadRepository {
   }
 
   //*Nested Object
-  Future<ReadNestedModel?> fetchSingleNestedObject() async {
+  static Future<ReadNestedModel?> fetchSingleNestedObject() async {
     try {
-      DocumentSnapshot docSnap =
-          await _reference.doc('zAVgxfOJCQUNsFY9T7QP').get();
-
-      debugPrint('exist');
-      Map<String, dynamic>? snapshot = docSnap.data() as Map<String, dynamic>?;
-
-      if (snapshot != null && snapshot.containsKey('nestedObject')) {
-        debugPrint('Has data :');
-        return ReadNestedModel.fromMap(snapshot['nestedObject']);
+      if (snapshot != null && snapshot!.containsKey('nestedObject')) {
+        debugPrint('Has data : $snapshot');
+        return ReadNestedModel.fromMap(snapshot!['nestedObject']);
+        
       } else {
         debugPrint('null');
         return null;
@@ -158,4 +132,98 @@ class SingleFirestoreReadRepository {
       return null;
     }
   }
+}
+
+/// {@template log_in_with_email_and_password_failure}
+/// Thrown during the login process if a failure occurs.
+/// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/signInWithEmailAndPassword.html
+/// {@endtemplate}
+class LogInWithEmailAndPasswordFailure implements Exception {
+  /// {@macro log_in_with_email_and_password_failure}
+  const LogInWithEmailAndPasswordFailure([
+    this.message = 'An unknown exception occurred.',
+  ]);
+
+  /// Create an authentication message
+  /// from a firebase authentication exception code.
+  factory LogInWithEmailAndPasswordFailure.fromCode(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return const LogInWithEmailAndPasswordFailure(
+          'Email is not valid or badly formatted.',
+        );
+      case 'user-disabled':
+        return const LogInWithEmailAndPasswordFailure(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'user-not-found':
+        return const LogInWithEmailAndPasswordFailure(
+          'Email is not found, please create an account.',
+        );
+      case 'wrong-password':
+        return const LogInWithEmailAndPasswordFailure(
+          'Incorrect password, please try again.',
+        );
+      default:
+        return const LogInWithEmailAndPasswordFailure();
+    }
+  }
+
+  /// The associated error message.
+  final String message;
+}
+
+/// {@template log_in_with_google_failure}
+/// Thrown during the sign in with google process if a failure occurs.
+/// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/signInWithCredential.html
+/// {@endtemplate}
+class LogInWithGoogleFailure implements Exception {
+  /// {@macro log_in_with_google_failure}
+  const LogInWithGoogleFailure([
+    this.message = 'An unknown exception occurred.',
+  ]);
+
+  /// Create an authentication message
+  /// from a firebase authentication exception code.
+  factory LogInWithGoogleFailure.fromCode(String code) {
+    switch (code) {
+      case 'account-exists-with-different-credential':
+        return const LogInWithGoogleFailure(
+          'Account exists with different credentials.',
+        );
+      case 'invalid-credential':
+        return const LogInWithGoogleFailure(
+          'The credential received is malformed or has expired.',
+        );
+      case 'operation-not-allowed':
+        return const LogInWithGoogleFailure(
+          'Operation is not allowed.  Please contact support.',
+        );
+      case 'user-disabled':
+        return const LogInWithGoogleFailure(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'user-not-found':
+        return const LogInWithGoogleFailure(
+          'Email is not found, please create an account.',
+        );
+      case 'wrong-password':
+        return const LogInWithGoogleFailure(
+          'Incorrect password, please try again.',
+        );
+      case 'invalid-verification-code':
+        return const LogInWithGoogleFailure(
+          'The credential verification code received is invalid.',
+        );
+      case 'invalid-verification-id':
+        return const LogInWithGoogleFailure(
+          'The credential verification ID received is invalid.',
+        );
+      default:
+        return const LogInWithGoogleFailure();
+    }
+  }
+
+  /// The associated error message.
+  final String message;
 }

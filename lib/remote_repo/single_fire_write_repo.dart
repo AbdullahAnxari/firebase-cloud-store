@@ -1,4 +1,4 @@
-import './../lib.dart';
+import '../lib.dart';
 
 //* Write Repositories
 class SingleFireWriteRepository {

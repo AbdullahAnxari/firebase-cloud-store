@@ -1,6 +1,6 @@
-import 'package:firebase_cloud_store/remote_repo/single_fire_write_repo.dart';
+import '../../../remote_repo/single_fire_write_repo.dart';
 
-import './../../../lib.dart';
+import '../../../lib.dart';
 
 class SingleWriteController extends GetxController {
   final TextEditingController singleStringController = TextEditingController();
@@ -26,15 +26,16 @@ class SingleWriteController extends GetxController {
 
   //*String
   void setSingleString({required String stringField}) async {
-    final result =
-        await SingleFireWriteRepository().creatSingleString(stringField);
+    try {
+      final result =
+          await SingleFireWriteRepository().creatSingleString(stringField);
 
-    if (result) {
-      Fluttertoast.showToast(msg: 'String is successfully Written');
-      // return true;
-    } else {
+      if (result) {
+        Fluttertoast.showToast(msg: 'String is successfully Written');
+        // return true;
+      }
+    } catch (e) {
       Fluttertoast.showToast(msg: "Fail to Write String");
-      // return false;
     }
   }
 
@@ -81,7 +82,7 @@ class SingleWriteController extends GetxController {
   void setSingleGeofield(
       {required double latitude, required double longitude}) async {
     final result = await SingleFireWriteRepository()
-        .createSingleGeofield(latitude:latitude, longitude:longitude);
+        .createSingleGeofield(latitude: latitude, longitude: longitude);
     if (result) {
       Fluttertoast.showToast(msg: 'String is successfully Written');
     } else {

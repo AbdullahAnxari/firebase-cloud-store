@@ -1,5 +1,3 @@
-
-
 import '../../../lib.dart';
 
 class ReadDataModel {

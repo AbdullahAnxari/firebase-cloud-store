@@ -34,25 +34,14 @@ class ReadView extends GetView<ReadController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //* Write String
-                    _customField(
-                      labelText: 'E-Mail',
-                      controller: stringFieldController,
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: false,
+                    const Text(
+                      'Read Data View',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 10,
+                          fontSize: 20,
+                          color: Colors.deepPurpleAccent),
                     ),
-                    TextButton(
-                      onPressed: () async {
-                        if (stringFieldController.text.isNotEmpty) {
-                          final newData = writeController.write.copyWith(
-                            stringField: stringFieldController.text.toString(),
-                          );
-                          writeController.setData(newData: newData);
-                        }
-                      },
-                      child: const Text("Create"),
-                    ),
-
                     //*Reading data
                     TextButton(
                       onPressed: controller.fetchData,

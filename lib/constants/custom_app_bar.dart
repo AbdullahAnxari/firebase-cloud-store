@@ -1,4 +1,4 @@
-import './../lib.dart';
+import '../lib.dart';
 
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, required this.heading});

@@ -1,4 +1,4 @@
-import './../lib.dart';
+import '../lib.dart';
 
 //* Custom button widget
 class CustomButton extends StatelessWidget {

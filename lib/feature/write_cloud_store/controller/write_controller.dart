@@ -8,7 +8,6 @@ class WriteController extends GetxController {
   final TextEditingController nestedString1Controller = TextEditingController();
   final TextEditingController nestedString2Controller = TextEditingController();
   final TextEditingController numberController = TextEditingController();
-  final TextEditingController referenceController = TextEditingController();
   final TextEditingController timestampController = TextEditingController();
   final TextEditingController geoFieldLatitudeController =
       TextEditingController();

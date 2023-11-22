@@ -7,5 +7,6 @@ class AppBinding extends Bindings {
     Get.put(ReadController());
     Get.put(SingleWriteController());
     Get.put(SingleReadController());
-  } 
+    Get.put(HomeController());
+  }
 }

@@ -22,9 +22,12 @@ class SingleReadView extends GetView<SingleReadController> {
       );
 
   Widget get _body => GetBuilder<SingleReadController>(
+        initState: (state) async {
+          await SingleFirestoreReadRepository.getDocSnap();
+        },
         builder: (_) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,7 +43,10 @@ class SingleReadView extends GetView<SingleReadController> {
 
                 //*Int
                 _rowText(
-                    heading: 'Age', value: controller.singelInt.toString()),
+                    heading: 'Age',
+                    value: controller.singelInt != null
+                        ? controller.singelInt.toString()
+                        : "N/A"),
                 SizedBox(
                   width: double.infinity,
                   child: CustomButton(
@@ -49,7 +55,7 @@ class SingleReadView extends GetView<SingleReadController> {
                   ),
                 ),
 
-                //*Bool
+                // //*Bool
                 _rowText(
                     heading: 'Student',
                     value: controller.singleBool.toString()),
@@ -61,10 +67,12 @@ class SingleReadView extends GetView<SingleReadController> {
                   ),
                 ),
 
-                //*Timestamp
+                // //*Timestamp
                 _rowText(
                     heading: 'TimeStamp',
-                    value: controller.singleTimestamp!.toDate().toString()),
+                    value: controller.singleTimestamp != null
+                        ? controller.singleTimestamp!.toDate().toString()
+                        : "N/A"),
                 SizedBox(
                   width: double.infinity,
                   child: CustomButton(
@@ -72,7 +80,7 @@ class SingleReadView extends GetView<SingleReadController> {
                       text: 'TimeStamp'),
                 ),
 
-                //*GeoPoint Latitude
+                // //*GeoPoint Latitude
                 _rowText(
                     heading: 'Latitude',
                     value: controller.singleGeopoint != null
@@ -85,7 +93,7 @@ class SingleReadView extends GetView<SingleReadController> {
                       text: 'GeoPoint'),
                 ),
 
-                //*GeoPoint Longitude
+                // //*GeoPoint Longitude
                 _rowText(
                   heading: 'Longitude',
                   value: controller.singleGeopoint != null
@@ -101,7 +109,7 @@ class SingleReadView extends GetView<SingleReadController> {
 
                 // * Array
                 ...List.generate(
-                  controller.singleArrayField!.length,
+                  controller.singleArrayField?.length ?? 0,
                   (index) {
                     return _rowText(
                       heading: index.toString(),
@@ -115,13 +123,13 @@ class SingleReadView extends GetView<SingleReadController> {
                   width: double.infinity,
                   child: CustomButton(
                       onPressed: controller.getSingleArrayField,
-                      text: 'ArrayField'),
+                      text: 'Tap to get the array'),
                 ),
 
                 //*NestedObject
                 TextButton(
                   onPressed: controller.getSingleNestedObject,
-                  child: Text('Nested Object'),
+                  child: const Text('Nested Object'),
                 ),
                 _rowText(
                     heading: 'String Field',

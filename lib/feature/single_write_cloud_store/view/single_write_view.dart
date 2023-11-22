@@ -1,4 +1,4 @@
-import './../../../lib.dart';
+import '../../../lib.dart';
 
 class SingleWriteView extends GetView<SingleWriteController> {
   const SingleWriteView({super.key});
@@ -27,9 +27,14 @@ class SingleWriteView extends GetView<SingleWriteController> {
         // print("Data in controller: ${controller.someData}");
         return SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
+                const Text(
+                  'Single Write Data View',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 20),
                 //* Write Singel String Field
                 Row(
                   children: [
@@ -42,9 +47,7 @@ class SingleWriteView extends GetView<SingleWriteController> {
                         obscureText: false,
                       ),
                     ),
-                    Spacer(
-                      flex: 1,
-                    ),
+                    const Spacer(flex: 1),
                     Expanded(
                       flex: 1,
                       child: SizedBox(
@@ -74,14 +77,12 @@ class SingleWriteView extends GetView<SingleWriteController> {
                       flex: 2,
                       child: _customField(
                         labelText: 'Number String',
-                        controller: controller.singleArrayController,
+                        controller: controller.singleNumberController,
                         keyboardType: TextInputType.text,
                         obscureText: false,
                       ),
                     ),
-                    Spacer(
-                      flex: 1,
-                    ),
+                    const Spacer(flex: 1),
                     Expanded(
                       flex: 1,
                       child: SizedBox(
@@ -103,7 +104,7 @@ class SingleWriteView extends GetView<SingleWriteController> {
                 ),
                 const SizedBox(height: 10),
 
-                //* Write Singel Bool Field
+                //*Bool Field
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -131,6 +132,22 @@ class SingleWriteView extends GetView<SingleWriteController> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 10),
+                SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: CustomButton(
+                        onPressed: () async {
+                          if (controller
+                              .singleBooleanController.text.isNotEmpty) {
+                            controller.setSingleBool(
+                              boolField: bool.parse(
+                                controller.singleBooleanController.text,
+                              ),
+                            );
+                          }
+                        },
+                        text: 'create')),
                 const SizedBox(height: 10),
 
                 //* Write Singel TimeStamp Field
@@ -246,7 +263,7 @@ class SingleWriteView extends GetView<SingleWriteController> {
                     ),
                   ],
                 ),
-                
+
                 SizedBox(height: 10.h),
                 SizedBox(
                   width: double.infinity,

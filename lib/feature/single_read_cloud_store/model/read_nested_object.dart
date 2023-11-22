@@ -3,7 +3,7 @@ import '../../../lib.dart';
 
 class ReadNestedModel {
   final String nestedString;
-  final int nestedNumber;
+  final String nestedNumber;
   ReadNestedModel({
     required this.nestedString,
     required this.nestedNumber,
@@ -11,7 +11,7 @@ class ReadNestedModel {
 
   ReadNestedModel copyWith({
     String? nestedString,
-    int? nestedNumber,
+    String? nestedNumber,
   }) {
     return ReadNestedModel(
       nestedString: nestedString ?? this.nestedString,
@@ -29,14 +29,27 @@ class ReadNestedModel {
   factory ReadNestedModel.fromMap(Map<String, dynamic> map) {
     return ReadNestedModel(
       nestedString: map['nestedString'] as String,
-      nestedNumber: map['nestedNumber'] as int,
+      nestedNumber: map['nestedNumber'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ReadNestedModel.fromJson(String source) => ReadNestedModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ReadNestedModel.fromJson(String source) =>
+      ReadNestedModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'ReadNestedModel(nestedString: $nestedString, nestedNumber: $nestedNumber)';
+  String toString() =>
+      'ReadNestedModel(nestedString: $nestedString, nestedNumber: $nestedNumber)';
+
+  @override
+  bool operator ==(covariant ReadNestedModel other) {
+    if (identical(this, other)) return true;
+
+    return other.nestedString == nestedString &&
+        other.nestedNumber == nestedNumber;
+  }
+
+  @override
+  int get hashCode => nestedString.hashCode ^ nestedNumber.hashCode;
 }

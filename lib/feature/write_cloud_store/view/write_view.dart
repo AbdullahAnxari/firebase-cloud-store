@@ -1,11 +1,11 @@
-import './../../../lib.dart';
+import '../../../lib.dart';
 
 // ignore: must_be_immutable
 class WriteView extends GetView<WriteController> {
   WriteView({super.key});
 
   bool isSwitchOn = false;
-  @override  
+  @override
   Widget build(BuildContext context) {
     return Theme(
         data: ThemeData(
@@ -24,7 +24,7 @@ class WriteView extends GetView<WriteController> {
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: Colors.black,
             // Set text color
           ),
         ),
@@ -40,7 +40,13 @@ class WriteView extends GetView<WriteController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const Text(
+                      'Write Data View',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
                     SizedBox(height: 20),
+
                     // //*String Field
                     _customField(
                       labelText: 'E-Mail',
@@ -136,13 +142,6 @@ class WriteView extends GetView<WriteController> {
                           controller.changeBooloeanValue(value: value),
                     ),
 
-                    //*Reference
-                    _customField(
-                      labelText: 'Reference Field',
-                      controller: controller.referenceController,
-                      keyboardType: TextInputType.text,
-                      obscureText: false,
-                    ),
                     const SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
@@ -165,8 +164,7 @@ class WriteView extends GetView<WriteController> {
                                   controller.geoFieldLatitudeController.text
                                       .isNotEmpty &&
                                   controller.geoFieldLogitudeController.text
-                                      .isNotEmpty &&
-                                  controller.referenceController.text.isNotEmpty
+                                      .isNotEmpty
 
                               // nestedObject
                               // geopoint
@@ -200,9 +198,6 @@ class WriteView extends GetView<WriteController> {
                               ),
                               booleanField: bool.tryParse(
                                   controller.booleanController.text),
-                              referenceField: ReferenceField(
-                                  referencePath:
-                                      controller.referenceController.text),
                             );
                             controller.setData(newData: newData);
                           }

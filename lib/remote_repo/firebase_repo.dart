@@ -1,3 +1,5 @@
+import 'exception_handling/exception_handling.dart';
+
 import '../../../lib.dart';
 
 class FirestoreRepository {
@@ -8,7 +10,6 @@ class FirestoreRepository {
     try {
       CollectionReference reference =
           _firestore.collection(FirebaseConstant.data);
-
       DocumentSnapshot docSnap =
           await reference.doc("zAVgxfOJCQUNsFY9T7QP").get();
 
@@ -20,7 +21,10 @@ class FirestoreRepository {
       } else {
         return null;
       }
-    } catch (e) {
+    } on FirebaseStorageException catch (e) {
+      debugPrint("Error: $e");
+      return null;
+    } on InternetException catch (e) {
       debugPrint("Error: $e");
       return null;
     }
@@ -34,8 +38,11 @@ class FirestoreRepository {
 
       await reference.add(data.toMap());
       return true;
-    } catch (e) {
-      debugPrint('Create data Error: $e');
+    } on FirebaseStorageException catch (e) {
+      debugPrint("Error: $e");
+      return false;
+    } on InternetException catch (e) {
+      debugPrint("Error: $e");
       return false;
     }
   }

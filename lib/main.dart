@@ -1,3 +1,5 @@
+import 'feature/home/view.dart';
+
 import 'lib.dart';
 
 Future<void> main() async {
@@ -22,11 +24,7 @@ class FirebaseReadApp extends StatelessWidget {
           initialBinding: AppBinding(),
           title: 'Firebase firebase_cloud_store',
           debugShowCheckedModeBanner: false,
-          // home: WriteView(),
-          home: SingleReadView(),
-          // home: SingleWriteView(),
-          // home:  ReadView(),
-          // home:  Bool(),
+          home: const HomeScreen(),
         );
       },
     );

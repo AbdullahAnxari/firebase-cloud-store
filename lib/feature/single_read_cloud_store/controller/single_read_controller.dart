@@ -6,11 +6,11 @@ class SingleReadController extends GetxController {
   //*String
   String singleString = 'N/A';
   void getSingleString() async {
-    final result = await SingleFirestoreReadRepository().fetchSingleString();
+    final result = await SingleFirestoreReadRepository.fetchSingleString();
     if (result != null) {
       singleString = result;
     } else {
-      FHelperFunctions.showSnackBar("Fail to fetch data");
+      ShowToast.showSnackBar("Fail to fetch data");
     }
     update();
   }
@@ -18,12 +18,12 @@ class SingleReadController extends GetxController {
   //*int
   int? singelInt;
   void getSingleInt() async {
-    final result = await SingleFirestoreReadRepository().fetchSingleInt();
+    final result = await SingleFirestoreReadRepository.fetchSingleInt();
     if (result != null) {
       singelInt = result;
-      FHelperFunctions.showSnackBar("Data Fetched");
+      ShowToast.showSnackBar("Data Fetched");
     } else {
-      FHelperFunctions.showSnackBar("Fail to fetch data");
+      ShowToast.showSnackBar("Fail to fetch data");
     }
     update();
   }
@@ -31,12 +31,12 @@ class SingleReadController extends GetxController {
   //*bool
   bool? singleBool;
   void getSingleBool() async {
-    final result = await SingleFirestoreReadRepository().fetchSingleBool();
+    final result = await SingleFirestoreReadRepository.fetchSingleBool();
     if (result != null) {
       singleBool = result;
-      FHelperFunctions.showSnackBar("Data Fetched");
+      ShowToast.showSnackBar("Data Fetched");
     } else {
-      FHelperFunctions.showSnackBar("Fail to fetch data");
+      ShowToast.showSnackBar("Fail to fetch data");
     }
     update();
   }
@@ -44,12 +44,12 @@ class SingleReadController extends GetxController {
   //*Timestamp
   Timestamp? singleTimestamp;
   void getsingleTimestamp() async {
-    final result = await SingleFirestoreReadRepository().fetchSingleTimestamp();
+    final result = await SingleFirestoreReadRepository.fetchSingleTimestamp();
     if (result != null) {
       singleTimestamp = result;
-      FHelperFunctions.showSnackBar("Data Fetched");
+      ShowToast.showSnackBar("Data Fetched");
     } else {
-      FHelperFunctions.showSnackBar("Fail to fetch data");
+      ShowToast.showSnackBar("Fail to fetch data");
     }
     update();
   }
@@ -57,31 +57,30 @@ class SingleReadController extends GetxController {
   //*GeoPoint
   GeoPoint? singleGeopoint;
   void getSingleGeopoint() async {
-    final result = await SingleFirestoreReadRepository().fetchSingleGeopint();
+    final result = await SingleFirestoreReadRepository.fetchSingleGeopint();
     if (result != null) {
       singleGeopoint = result;
-      FHelperFunctions.showSnackBar('Data Fetched');
+      ShowToast.showSnackBar('Data Fetched');
     } else {
-      FHelperFunctions.showSnackBar('Fail to fetch data');
+      ShowToast.showSnackBar('Fail to fetch data');
     }
     update();
   }
 
-
   //*Nested
-  // List<String>? singleNestedNum;
-ReadNestedModel? singleNestedObject;
+  // Map<String,dynamic>? singleNestedObject;
+  ReadNestedModel? singleNestedObject;
 
   void getSingleNestedObject() async {
     final result =
-        await SingleFirestoreReadRepository().fetchSingleNestedObject();
+        await SingleFirestoreReadRepository.fetchSingleNestedObject();
 
     if (result != null) {
       singleNestedObject = result;
 
-      FHelperFunctions.showSnackBar('Data Fetched');
+      ShowToast.showSnackBar('Data Fetched');
     } else {
-      FHelperFunctions.showSnackBar('Fail to Fetch data');
+      ShowToast.showSnackBar('Fail to Fetch data');
     }
     update();
   }
@@ -89,15 +88,14 @@ ReadNestedModel? singleNestedObject;
   //*Array field
   List<String>? singleArrayField;
   void getSingleArrayField() async {
-    final result =
-        await SingleFirestoreReadRepository().fetchSingleArrayField();
+    final result = await SingleFirestoreReadRepository.fetchSingleArrayField();
     if (result != null) {
       singleArrayField = result;
-      FHelperFunctions.showSnackBar('Data Fetched');
+      ShowToast.showSnackBar('Data Fetched');
     } else {
-      FHelperFunctions.showSnackBar('Fail to fetch data');
+      ShowToast.showSnackBar('Fail to fetch data');
     }
     update();
   }
-
 }
+
