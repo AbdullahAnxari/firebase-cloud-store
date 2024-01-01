@@ -5,6 +5,7 @@ export 'feature/feature.dart';
 export 'remote_repo/remote_repo.dart';
 export 'helper/helper.dart';
 export 'feature/read_cloud_store/controller/read_controller.dart';
+export 'controller/controller.dart';
 
 //*PACKAGES
 export 'package:firebase_cloud_store/feature/write_cloud_store/model/model.dart';
@@ -18,13 +19,17 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:get/get.dart';
 export 'package:firebase_cloud_store/firebase_options.dart';
 export 'dart:convert';
+
 export 'package:flutter/foundation.dart';
 export '../feature/write_cloud_store/controller/write_controller.dart';
 export 'package:firebase_cloud_store/feature/read_cloud_store/model/nested_read_model.dart';
 export 'feature/read_cloud_store/view/read_view.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:fluttertoast/fluttertoast.dart';
+
 export 'dart:async';
 export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:firebase_cloud_store/remote_repo/firebase_auth.dart';

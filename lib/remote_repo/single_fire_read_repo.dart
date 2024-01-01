@@ -17,7 +17,7 @@ class SingleFirestoreReadRepository {
   static Future<String?> fetchSingleString() async {
     try {
       if (snapshot != null && snapshot!.containsKey('stringField')) {
-        return snapshot!['stringField'];
+        return snapshot!['stringField'];  
       } else {
         return null;
       }

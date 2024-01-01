@@ -82,10 +82,11 @@ class SingleReadView extends GetView<SingleReadController> {
 
                 // //*GeoPoint Latitude
                 _rowText(
-                    heading: 'Latitude',
-                    value: controller.singleGeopoint != null
-                        ? controller.singleGeopoint!.latitude.toString()
-                        : 'N/A'),
+                  heading: 'Latitude',
+                  value: controller.singleGeopoint != null
+                      ? controller.singleGeopoint!.latitude.toString()
+                      : 'N/A',
+                ),
                 SizedBox(
                   width: double.infinity,
                   child: CustomButton(

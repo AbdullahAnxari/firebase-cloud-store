@@ -1,6 +1,6 @@
 import '../../lib.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends GetView<HomeConnectivityController> {
   const HomeScreen({super.key});
 
   @override
@@ -19,10 +19,17 @@ class HomeScreen extends GetView<HomeController> {
         ),
       );
 
-  Widget get _body => GetBuilder<HomeController>(
-        initState: (_) => controller.getConnectivity(),
+  Widget get _body => GetBuilder<HomeConnectivityController>(
+        initState: (_) {
+          // controller.getConnectivity();
+          ConnectivityController.instance.checkInternet();
+
+          ConnectionServices connectionService;
+          connectionService = Get.find<ConnectionServices>();
+          connectionService.listenToNetworkChanges(Get.context!);
+        },
         builder: (_) {
-          return Center(
+          return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
@@ -69,6 +76,28 @@ class HomeScreen extends GetView<HomeController> {
                         Get.to(() => const SingleReadView());
                       },
                       child: const Text("SingleReadCloudStore"),
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 80,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(() => const ReadStreamView());
+                      },
+                      child: const Text("StreamReadView"),
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 80,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(() => const WidgetTree());
+                      },
+                      child: const Text("AuthWidgetTree"),
                     ),
                   ),
                 ],

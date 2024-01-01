@@ -1,5 +1,3 @@
-import 'feature/home/view.dart';
-
 import 'lib.dart';
 
 Future<void> main() async {
@@ -10,9 +8,14 @@ Future<void> main() async {
   runApp(const FirebaseReadApp());
 }
 
-class FirebaseReadApp extends StatelessWidget {
+class FirebaseReadApp extends StatefulWidget {
   const FirebaseReadApp({super.key});
 
+  @override
+  State<FirebaseReadApp> createState() => _FirebaseReadAppState();
+}
+
+class _FirebaseReadAppState extends State<FirebaseReadApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

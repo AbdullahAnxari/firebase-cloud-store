@@ -8,7 +8,7 @@ showDialogBox() => showCupertinoDialog<String>(
           content: const Text('Please check your internet connection'),
           actions: [
             TextButton(
-                onPressed: HomeController.instance.close,
+                onPressed: HomeConnectivityController.instance.close,
                 child: const Text('OK'))
           ],
         ),

@@ -1,3 +1,5 @@
+import 'package:firebase_cloud_store/constants/show_toast.dart';
+
 import '../../../lib.dart';
 
 class SingleReadController extends GetxController {
@@ -9,8 +11,9 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleString();
     if (result != null) {
       singleString = result;
+      showToast(msg: "Data Fetched");
     } else {
-      ShowToast.showSnackBar("Fail to fetch data");
+      showToast(msg: "Fail to fetch data");
     }
     update();
   }
@@ -21,9 +24,9 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleInt();
     if (result != null) {
       singelInt = result;
-      ShowToast.showSnackBar("Data Fetched");
+      showToast(msg: "Data Fetched");
     } else {
-      ShowToast.showSnackBar("Fail to fetch data");
+      showToast(msg: "Fail to fetch data");
     }
     update();
   }
@@ -34,9 +37,9 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleBool();
     if (result != null) {
       singleBool = result;
-      ShowToast.showSnackBar("Data Fetched");
+      showToast(msg: "Data Fetched");
     } else {
-      ShowToast.showSnackBar("Fail to fetch data");
+      showToast(msg: "Fail to fetch data");
     }
     update();
   }
@@ -47,9 +50,9 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleTimestamp();
     if (result != null) {
       singleTimestamp = result;
-      ShowToast.showSnackBar("Data Fetched");
+      showToast(msg: "Data Fetched");
     } else {
-      ShowToast.showSnackBar("Fail to fetch data");
+      showToast(msg: "Fail to fetch data");
     }
     update();
   }
@@ -60,9 +63,9 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleGeopint();
     if (result != null) {
       singleGeopoint = result;
-      ShowToast.showSnackBar('Data Fetched');
+      showToast(msg: 'Data Fetched');
     } else {
-      ShowToast.showSnackBar('Fail to fetch data');
+      showToast(msg: 'Fail to fetch data');
     }
     update();
   }
@@ -70,17 +73,14 @@ class SingleReadController extends GetxController {
   //*Nested
   // Map<String,dynamic>? singleNestedObject;
   ReadNestedModel? singleNestedObject;
-
   void getSingleNestedObject() async {
     final result =
         await SingleFirestoreReadRepository.fetchSingleNestedObject();
-
     if (result != null) {
       singleNestedObject = result;
-
-      ShowToast.showSnackBar('Data Fetched');
+      showToast(msg: 'Data Fetched');
     } else {
-      ShowToast.showSnackBar('Fail to Fetch data');
+      showToast(msg: 'Fail to Fetch data');
     }
     update();
   }
@@ -91,11 +91,10 @@ class SingleReadController extends GetxController {
     final result = await SingleFirestoreReadRepository.fetchSingleArrayField();
     if (result != null) {
       singleArrayField = result;
-      ShowToast.showSnackBar('Data Fetched');
+      showToast(msg: 'Data Fetched');
     } else {
-      ShowToast.showSnackBar('Fail to fetch data');
+      showToast(msg: 'Fail to fetch data');
     }
     update();
   }
 }
-
