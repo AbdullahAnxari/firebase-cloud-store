@@ -2,9 +2,10 @@ import '../../../lib.dart';
 
 class AppBinding extends Bindings {
   @override
-  void dependencies() {  
+  void dependencies() {
     ///Networking
     Get.put(ConnectionServices());
+    Get.put(ConnectivityController());
 
     ///Controllers
     Get.put(WriteController());
